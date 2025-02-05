@@ -22,7 +22,20 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return NaN;
+  } else if (n < 0) {
+    return undefined;
+  } else if (n === 0) {
+    return 1;
+  }
+
+  let total = 1;
+
+  for (let i = 1; i <= n; i++) {
+    total = total * i;
+  }
+  return total
 }
 
 /**
@@ -32,7 +45,18 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  if (typeof n !== "number") {
+    return null;
+  } else if (n <= 0) {
+    return [];
+  }
+
+  let number = [];
+  for (let i = 1; i <= n; i++) {
+    number.push(i);
+  }
+
+  return number;
 }
 
 /**
@@ -40,15 +64,38 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  if (strings.length === 0) {
+    return "";
+  }
+
+  let longestString = "";
+
+  for (const str of strings) {
+    if (str.length > longestString.length) {
+      longestString = str;
+    }
+  }
+  return longestString;
 }
+
 
 /**
  * @param {boolean[]} attendance - `true` means a student is present, `false` means a student is absent
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  let number = 0;
+  if (attendance.length === 0) {
+    return 0;
+  }
+
+  for (const student of attendance) {
+    if (student === true) {
+      number += 1;
+    }
+
+  }
+  return number;
 }
 
 /**
@@ -62,5 +109,22 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if (typeof dna !== "string") {
+    return null;
+  }
+
+  let complement = [];
+
+  for (const str of dna) {
+    if (str === "T") {
+      complement.push("A");
+    } else if (str === "A") {
+      complement.push("T");
+    } else if (str === "C") {
+      complement.push("G");
+    } else if (str === "G") {
+      complement.push("C");
+    }
+  }
+  return complement.join("");
 }
